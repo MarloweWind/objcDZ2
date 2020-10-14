@@ -57,7 +57,6 @@ void menu() {
             printf("\nБуква НЕ входит в английский алфовит.\n");
         }
         
-        
         menu();
     } else {
         Calculator *calc = [Calculator new];
