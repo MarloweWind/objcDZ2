@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSNumber *first;
 @property NSNumber *second;
-@property NSNumber *operations;
+@property NSNumber *state;
 
 -(void)menu;
 -(void)doPlusWithFirst:(NSNumber *) first Second:(NSNumber *) second;

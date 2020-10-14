@@ -40,7 +40,7 @@ void menu() {
     printf(" 1. Английский.\n");
     printf(" 2. Калькулятор.\n");
 
-    printf("Вы выбрали: ");
+    printf("Функция: ");
     scanf(" %i", &operations);
     
     if (operations == 1) {

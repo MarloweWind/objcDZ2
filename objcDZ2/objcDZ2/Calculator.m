@@ -23,7 +23,7 @@
     printf("___\n");
     
     scanf("%int",&menu_item);
-    calc.operations = [NSNumber numberWithInteger:menu_item];
+    calc.state = [NSNumber numberWithInteger:menu_item];
     
     if (menu_item != -1 && menu_item != 1 && menu_item != 2 && menu_item != 3 && menu_item != 4) {
         printf("Введите 1, 2, 3, 4");
@@ -51,7 +51,7 @@
         
         if (first_entered > -1 && second_entered > -1){
             [self menu];
-            [self doCalculateWithOperation:calc.operations];
+            [self doCalculateWithOperation:calc.state];
         }
     }
 }
