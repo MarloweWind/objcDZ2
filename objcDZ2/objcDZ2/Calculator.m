@@ -14,6 +14,11 @@
     Calculator *calc = self;
     int menu_item = 0;
     
+    OperationType addition = opAddition;
+    OperationType subtraction = opSubtraction;
+    OperationType multiply = opMultipy;
+    OperationType divide = opDivide;
+    
     printf("\nВыберете, что вы хотите сделать в введенными числами.");
     printf("\n___\n");
     printf(" 1: Сложение\n");
@@ -25,7 +30,7 @@
     scanf("%int",&menu_item);
     calc.state = [NSNumber numberWithInteger:menu_item];
     
-    if (menu_item != -1 && menu_item != 1 && menu_item != 2 && menu_item != 3 && menu_item != 4) {
+    if (menu_item != -1 && menu_item != addition && menu_item != subtraction && menu_item != multiply && menu_item != divide) {
         printf("Введите 1, 2, 3, 4");
         [self menu];
     }
@@ -59,32 +64,40 @@
 -(void) doCalculateWithOperation:(NSNumber *) operation {
     Calculator *calc = self;
     
-    switch ([operation intValue]) {
-        case 1: {
-            [self doPlusWithFirst:calc.first Second:calc.second];
-            break;
-        }
-        case 2: {
-            [self doMinusWithFirst:calc.first Second:calc.second];
-            break;
-        }
-        case 3: {
-            [self doMultiplyWithFirst:calc.first Second:calc.second];
-            break;
-        }
-        case 4: {
+    
+    OperationType plus = opAddition;
+    OperationType minus = opSubtraction;
+    OperationType multiply = opMultipy;
+    OperationType divide = opDivide;
+    OperationType avg = opAvg;
+    
+    NSInteger oper = [operation integerValue];
+    
+    if (oper == plus) {
+        [self doPlusWithFirst:calc.first Second:calc.second];
+    } else if (oper == minus) {
+        [self doMinusWithFirst:calc.first Second:calc.second];
+        
+    } else if (oper == multiply) {
+        [self doMultiplyWithFirst:calc.first Second:calc.second];
+        
+    } else if (oper == divide) {
+        if (calc.second == 0) {
+            printf("You can't divide on zero!");
+        } else {
             [self doDevideWithFirst:calc.first Second:calc.second];
-            break;
         }
-        case -1: {
-            printf("Выход\n");
-            break;
-        }
-        default:
-            printf("Введите 1, 2, 3, 4");
-            break;
+    } else if (oper == avg) {
+        int third = 0;
+        
+        printf("Please enter one more nuber: ");
+        scanf("%i", &third);
+        
+    } else if (oper == -1) {
+        printf("Exit!\n");
+    } else {
+        printf("Unknown operator");
     }
-
     if ([operation intValue] > -1) {
         [self getNumbers];
     }

@@ -16,6 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSNumber *second;
 @property NSNumber *state;
 
+enum OperationType {
+    opAddition = 1,
+    opSubtraction = 2,
+    opMultipy = 3,
+    opDivide = 4,
+    opAvg = 5
+};
+
+typedef NSInteger OperationType;
+
 -(void)menu;
 -(void)doPlusWithFirst:(NSNumber *) first Second:(NSNumber *) second;
 -(void)doMinusWithFirst:(NSNumber *) first Second:(NSNumber *) second;
