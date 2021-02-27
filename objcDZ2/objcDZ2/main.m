@@ -39,8 +39,9 @@ void menu() {
     printf("\nВыберите функцию:\n");
     printf(" 1. Английский.\n");
     printf(" 2. Калькулятор.\n");
+    printf(" 3. Принт.\n");
 
-    printf("Вы выбрали: ");
+    printf("Функция: ");
     scanf(" %i", &operations);
     
     if (operations == 1) {
@@ -57,8 +58,37 @@ void menu() {
             printf("\nБуква НЕ входит в английский алфовит.\n");
         }
         
-        
         menu();
+        
+    } else if (operations == 3) {
+        
+        int number = 0;
+                
+        printf("Введите число: ");
+        scanf(" %i", &number);
+        
+        NSMutableArray *array = [NSMutableArray arrayWithObject:[NSNumber numberWithInt:number]];
+        
+        do {
+            printf("Введите число или -1 для принта: ");
+            scanf(" %i", &number);
+            
+            NSInteger count = [array count];
+            [array insertObject:[NSNumber numberWithInt:number] atIndex:count];
+        } while (number != -1);
+        
+        printf("Принт: ");
+        
+        for (NSNumber *number in array) {
+            if ([number intValue] != -1){
+                printf("%i", [number intValue]);
+                printf(",");
+            }
+        }
+        
+        printf("\n");
+        menu();
+        
     } else {
         Calculator *calc = [Calculator new];
         [calc getNumbers];
